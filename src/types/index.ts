@@ -42,3 +42,38 @@ export interface ProcessingState {
   isProcessing: boolean;
   currentStep: number;
 }
+
+export interface AuthUser {
+  id: string;
+  username: string;
+  email: string;
+  token: string;
+}
+
+export interface UserSession {
+  id: string;
+  user_id: string;
+  username: string;
+  email: string;
+  token: string;
+  login_at: string;
+  last_activity: string;
+  expires_at: string;
+  is_active: boolean;
+}
+
+export interface RequestHistoryItem {
+  id: string;
+  user_session_id: string;
+  request_type: string;
+  document_name: string;
+  document_type: string | null;
+  preprocessing_used: boolean;
+  request_payload: Record<string, unknown>;
+  response_data: Record<string, unknown> | null;
+  blob_url: string | null;
+  status: 'pending' | 'success' | 'failed';
+  error_message: string | null;
+  created_at: string;
+  processing_duration_ms: number | null;
+}
